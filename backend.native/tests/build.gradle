@@ -41,10 +41,8 @@ configurations {
 }
 
 repositories {
-    ivy {
-        ivyPattern      'https://buildserver.labs.intellij.net/guestAuth/repository/download/[module]/[revision]/teamcity-ivy.xml'
-        artifactPattern 'https://buildserver.labs.intellij.net/guestAuth/repository/download/[module]/[revision]/[artifact](.[ext])'
-    }
+    mavenLocal()
+    jcenter()
 }
 
 dependencies {
@@ -67,6 +65,7 @@ dependencies {
             println("WARNING: using stdlib tests provided by gradle.properties. Please execute :kotlin:zipTestData")
         }
     }
+    /*
     if (updateTestData) {
         update_tests(group: 'org', name: 'Kotlin_KotlinRelease_1370_Compiler', version: testKotlinCompilerVersion) {
             artifact {
@@ -81,6 +80,8 @@ dependencies {
             }
         }
     }
+
+     */
 }
 ext.testOutputRoot = rootProject.file("test.output").absolutePath
 ext.externalTestsDir = project.file("build/external")
